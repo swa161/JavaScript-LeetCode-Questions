@@ -16,3 +16,26 @@
  ### 2621 Sleep
  - `new Promise()` creates a Promise object.
  - We can pass in  two methods resolve  and reject. ```new Promise((resolve, reject) => {resolve(1)})```
+
+
+ ### 2629 Function Composition
+ - To spread an array so that its element are treated as individual arguments is called Spreading.
+ - Use the three dot operator to spread an array. `...Array`
+ - ```compose = (...funcs) => (initialValue) => funcs.reduceRight((acc, fn) => fn(acc), initialValue) ```
+ - first call `const f = compose(f1,f2,f3)` gives a function `(initialValue) => funcs.reduceRight((acc, fn) => fn(acc), initialValue)`
+ - second call `f(x)` gives the value.
+ - alternatively we can use a for loop and loop backwards.
+
+
+ ### 2634 Filter Elements from Array
+ - In JavaScript, functions do not enforce arity (the number of parameters a function declares). 
+ - Which means we can pass more or fewer arguments than parameters.
+
+ ### 2648 Generate Fibonacci Sequence
+ - The `*` denotes a `Generator Function`
+ - `yield` is the keyword used inside a generator function. It's like a `return` that does not end the function, it just pauses the functions.
+ - **The Iterator**: When call a generator function, it does not actually run the code inside, it returns a **Generator Object** (an iterator).
+ - **At the end of yield rememeber to add a semicolon**.
+
+### 2665. Counter 2
+ - `return {}` returns an object

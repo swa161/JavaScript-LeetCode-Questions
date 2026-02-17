@@ -77,23 +77,6 @@ var fibGenerator = function* () {
         yield curr;
         [curr, next] = [next, curr + next]
     }
-    // let a = 0
-    // let b = 1
-    // let counter = 0
-    // while (true) {
-    //     if (counter === 0) {
-    //         yield 0
-    //     } else if (counter === 1) {
-    //         yield 1
-
-    //     } else {
-    //         let c = b + a
-    //         a = b
-    //         b = c
-    //         yield c
-    //     }
-    //     counter += 1
-    // }
 }
 
 //#2665. Counter 2
@@ -117,10 +100,6 @@ var createCounter = function (init) {
 };
 
 //2666. Allow One Function Call
-/**
- * @param {Function} fn
- * @return {Function}
- */
 var once = function(fn) {
     let counter = 0
     return function(...args){
@@ -133,4 +112,36 @@ var once = function(fn) {
     }
 };
 
+//#2667. Create Hello World Function
+var createHelloWorld = function() {
+    
+    return function(...args) {
+        return "Hello World";     
+    }
+};
+
+//#2677. Chunk Array
+var chunk = function(arr, size) {
+    let ans = []
+
+    for (let i = 0; i < arr.length; i += size) {
+        ans.push(arr.slice(i,i+size))
+    }
+    return ans
+};
+
+//#2695. Array Wrapper
+class ArrayWrapper {
+    constructor(nums) {
+        this.nums = nums
+    }
+
+    valueOf() {
+        return this.nums.reduce((acc, curr) => acc+curr , 0)
+    }
+    toString() {
+        // const res = '[' + this.nums.join(",") +']'
+        return `[${this.nums.join(",")}]`
+    }
+}
 

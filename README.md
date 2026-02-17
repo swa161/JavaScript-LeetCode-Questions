@@ -39,3 +39,8 @@
 
 ### 2665. Counter 2
  - `return {}` returns an object
+
+### 2695 Array Wrapper
+ - `func() {}`: its value of `this` depends on who called the function.
+ - Or use `func: function() {}`
+ - `() => {}`: it "captures" the `this` from the surrounding code where it was created. like window or global or 

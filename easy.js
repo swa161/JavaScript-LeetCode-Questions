@@ -25,7 +25,6 @@ async function sleep(millis) {
     })
     // return new Promise(resolve => setTimeout(resolve,millis))
 }
-let t = Date.now()
 
 //#2626. Array Reduce Transformation
 
@@ -100,9 +99,9 @@ var createCounter = function (init) {
 };
 
 //2666. Allow One Function Call
-var once = function(fn) {
+var once = function (fn) {
     let counter = 0
-    return function(...args){
+    return function (...args) {
         if (counter === 0) {
             counter += 1
             return fn(...args)
@@ -113,19 +112,19 @@ var once = function(fn) {
 };
 
 //#2667. Create Hello World Function
-var createHelloWorld = function() {
-    
-    return function(...args) {
-        return "Hello World";     
+var createHelloWorld = function () {
+
+    return function (...args) {
+        return "Hello World";
     }
 };
 
 //#2677. Chunk Array
-var chunk = function(arr, size) {
+var chunk = function (arr, size) {
     let ans = []
 
     for (let i = 0; i < arr.length; i += size) {
-        ans.push(arr.slice(i,i+size))
+        ans.push(arr.slice(i, i + size))
     }
     return ans
 };
@@ -137,7 +136,7 @@ class ArrayWrapper {
     }
 
     valueOf() {
-        return this.nums.reduce((acc, curr) => acc+curr , 0)
+        return this.nums.reduce((acc, curr) => acc + curr, 0)
     }
     toString() {
         // const res = '[' + this.nums.join(",") +']'
@@ -145,3 +144,55 @@ class ArrayWrapper {
     }
 }
 
+//#2703. Return Length of Arguments Passed
+var argumentsLength = function (...args) {
+    return args.length;
+};
+
+//#2704. To Be Or Not To Be
+var expect = function (val) {
+    return {
+        toBe(v) {
+            if (v !== val) {
+                throw new Error("Not Equal")
+            }
+            return true
+        },
+        notToBe(v) {
+            if (v === val) {
+                throw new Error("Equal")
+            }
+            return true
+        }
+    }
+};
+
+//#2715. Timeout Cancellation
+var cancellable = function (fn, args, t) {
+    const timer = setTimeout(() => fn(...args), t)
+    return () => {
+        clearTimeout(timer)
+    }
+};
+
+//#2723. Add Two Promises
+var addTwoPromises = async function(promise1, promise2) {
+    const res1 = await promise1
+    const res2 = await promise2
+    return Promise.resolve(res1+res2)
+};
+
+//#2724. Sort By
+var sortBy = function(arr, fn) {
+    function comparefn(a, b) {
+        if (fn(a) > fn(b)) {
+            return 1;
+        } else {
+            return -1;
+        } 
+        return 0;
+    }
+    return arr.sort(comparefn)
+};
+arr = [[3, 4], [5, 2], [10, 1]], fn = (x) => x[1]
+console.log(sortBy(arr, fn))

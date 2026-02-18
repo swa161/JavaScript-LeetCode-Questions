@@ -43,4 +43,17 @@
 ### 2695 Array Wrapper
  - `func() {}`: its value of `this` depends on who called the function.
  - Or use `func: function() {}`
- - `() => {}`: it "captures" the `this` from the surrounding code where it was created. like window or global or 
+ - `() => {}`: it "captures" the `this` from the surrounding code where it was created. like window or global.
+
+ ### 2715 Timeout Cancellation
+ - In JavaScript, `setTimeout` creates a timer that will execute regardless of what happends later.
+ - **Unless** the developer explicitly tell the browser or Node.js to kill that specific timer ID.
+ - When calling setTimeout, it returns a numeric ID. `const timerID = setTimeout()`
+ - Use `clearTimeout(timerID)` to stop the running `setTimeout`.
+
+ ### 2723 Add Two Promises
+ - shorthand of `new Promise(resolve => resolve())` is `Promise.resolve()`
+
+ ### 2724. Sort By
+ - `Function Reference` returns the body of the function.
+ - `Function Invocation` executes the function.

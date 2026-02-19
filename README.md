@@ -57,3 +57,25 @@
  ### 2724. Sort By
  - `Function Reference` returns the body of the function.
  - `Function Invocation` executes the function.
+
+ ### 2726. Calculator with Method Chaining
+ - In order to allow method chaining for a class, the methods within it needs to return the class itself using `keyword` `this`. e.g `return this`
+
+ ### 2727 Is Object Empty
+ - use `Array.isArray()` to check is the value is an Array.
+ - **Or** Alternatively we can use `Object.prototype.toString.call(value)` to check the type of the value.
+ - For this question, we can just use a for loop to check if there is anything in the value.
+
+ ### 2618 Check if Object Instance of Class
+ - In JavaScript, inheritance is achieved with the prototype chain. `.__proto__`
+ - We can add methods to a class or object using `.prototype` keyword.
+ - To find out the prototype of a object, we can use the function `Object.getPrototypeOf(obj)`
+ - **setting a prototype** using `const childObject = Object.create(parentObject)` childObject inherits the property of parentObject 
+ - `new` keyword  transform a fucntion into a `Constructor`, only works with constructor functions or classes.
+   - it creates a new empty object
+   - sets the `__proto__` of this new object to the construcor function's `.prototype`. This is how the new object inherits methods.
+ 
+
+ ### 2622. Cache With Time Limit
+ - Use `new Map()` to create a new key value pair.
+ - `![alt text](image.png)`

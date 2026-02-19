@@ -84,11 +84,9 @@ var createCounter = function (init) {
     let a = init
     return {
         increment: () => {
-
             return ++a
         },
         decrement: () => {
-
             return --a
         },
         reset: () => {
@@ -134,7 +132,6 @@ class ArrayWrapper {
     constructor(nums) {
         this.nums = nums
     }
-
     valueOf() {
         return this.nums.reduce((acc, curr) => acc + curr, 0)
     }
@@ -176,23 +173,116 @@ var cancellable = function (fn, args, t) {
 };
 
 //#2723. Add Two Promises
-var addTwoPromises = async function(promise1, promise2) {
+var addTwoPromises = async function (promise1, promise2) {
     const res1 = await promise1
     const res2 = await promise2
-    return Promise.resolve(res1+res2)
+    return Promise.resolve(res1 + res2)
 };
 
 //#2724. Sort By
-var sortBy = function(arr, fn) {
+var sortBy = function (arr, fn) {
     function comparefn(a, b) {
         if (fn(a) > fn(b)) {
             return 1;
         } else {
             return -1;
-        } 
+        }
         return 0;
     }
     return arr.sort(comparefn)
 };
-arr = [[3, 4], [5, 2], [10, 1]], fn = (x) => x[1]
-console.log(sortBy(arr, fn))
+
+//#2725. Interval Cancellation
+var cancellable = function (fn, args, t) {
+    fn(...args)
+    const intervalId = setInterval(() => fn(...args), t)
+    return () => {
+        clearInterval(intervalId)
+    }
+};
+
+//#2726. Calculator with Method Chaining
+class Calculator {
+
+    /** 
+     * @param {number} value
+     */
+    constructor(value) {
+        this.value = value
+    }
+
+    /** 
+     * @param {number} value
+     * @return {Calculator}
+     */
+    add(value) {
+        this.value += value
+        return this
+    }
+
+    /** 
+     * @param {number} value
+     * @return {Calculator}
+     */
+    subtract(value) {
+        this.value -= value
+        return this
+    }
+
+    /** 
+     * @param {number} value
+     * @return {Calculator}
+     */
+    multiply(value) {
+        this.value *= value
+        return this
+    }
+
+    /** 
+     * @param {number} value
+     * @return {Calculator}
+     */
+    divide(value) {
+        if (value === 0) {
+            throw new Error("Division by zero is not allowed")
+        }
+        this.value /= value
+        return this
+    }
+
+    /** 
+     * @param {number} value
+     * @return {Calculator}
+     */
+    power(value) {
+        this.value = Math.pow(this.value, value)
+    }
+
+    /** 
+     * @return {number}
+     */
+    getResult() {
+        return this.value
+    }
+}
+
+//# 2727. Is Obejct Empty
+/**
+ * @param {Object|Array} obj
+ * @return {boolean}
+ */
+var isEmpty = function(obj) {
+    let length = 0
+    if (Array.isArray(obj)) {
+        length = obj.length
+    } else if (typeof obj === 'object') {
+        length = Object.keys(obj).length
+    }
+    return length === 0
+};
+
+obj = {}
+a =Object.prototype.toString.call(obj)
+console.log(a)
+console.log(a === '[object Object]')
+console.log(isEmpty(obj))

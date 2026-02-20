@@ -41,19 +41,40 @@ TimeLimitedCache.prototype.set = function (key, value, duration) {
     return exist;
 };
 
-/** 
- * @param {number} key
- * @return {number} value associated with key
- */
 TimeLimitedCache.prototype.get = function (key) {
 
-    return this.obj.get(key) ? this.obj.get(key)  : -1
+    return this.obj.get(key) ? this.obj.get(key) : -1
 };
 
-/** 
- * @return {number} count of non-expired keys
- */
 TimeLimitedCache.prototype.count = function () {
     return this.obj.size
 };
 
+
+//#2623. Memoize
+/**
+ * @param {Function} fn
+ * @return {Function}
+ */
+function memoize(fn) {
+    this.cache = new Map()
+    return function (...args) {
+        const key = JSON.stringify(args)
+        console.log(key)
+        if (this.cache.has(key)) {
+            return this.cache.get(key)
+        }
+        const value = fn(...args)
+        this.cache.set(key, value)
+        return value
+    }
+}
+
+let callCount = 0;
+const memoizedFn = memoize(function (a, b) {
+    callCount += 1;
+    return a + b;
+})
+memoizedFn(2, 3) // 5
+memoizedFn(2, 3) // 5
+console.log(callCount) // 1 

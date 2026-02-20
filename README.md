@@ -78,4 +78,12 @@
 
  ### 2622. Cache With Time Limit
  - Use `new Map()` to create a new key value pair.
- - `![alt text](image.png)`
+ - `Map` is generally faster than `{}` for scenarios involcing frequent additions, removals,and large datasets.
+ - `Map` is faster for dynamic data, key can be any type
+ - `Object` key must be strings or symbols only, JS will convert number key to a string.
+
+
+### 2623. Memoize
+ - If the `args` is an array, every time the function is called, a new array instance is created in the memory, even if the numbers inside are exactly the same.
+ - In JavaScript, Objects and Arrays are reference Types. When using them as keys i na `map`, the Map doesn't look at the content; it looks at the memory address.
+ - use `JSON.strinfy(args)` to convert an array into a string primitive. or Alternatively `args.join(",")`

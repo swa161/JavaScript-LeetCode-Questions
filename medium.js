@@ -70,11 +70,46 @@ function memoize(fn) {
     }
 }
 
-let callCount = 0;
-const memoizedFn = memoize(function (a, b) {
-    callCount += 1;
-    return a + b;
-})
-memoizedFn(2, 3) // 5
-memoizedFn(2, 3) // 5
-console.log(callCount) // 1 
+//# 2624 Snail Traversal
+
+// Array.prototype.snail = function (rowsCount, colsCount) {
+//     if (rowsCount * colsCount !== this.length) return []
+//     let res = []
+//     for (let i = 0; i < this.length; i += rowsCount) {
+//         res.push(this.slice(i, i + rowsCount))
+//     }
+//     let array2d = Array.from({ length: rowsCount }, () => Array.from({ length: colsCount }, () => 0))
+//     for (let i = 0; i < res.length; i++) {
+//         for (let j = 0; j < res[0].length; j++) {
+//             if (i % 2 === 0) {
+//                 array2d[j][i] = res[i][j]
+//             } else {
+//                 let a = res[0].length - 1
+//                 array2d[j][i] = res[i][a - j]
+//             }
+//         }
+//     }
+//     return array2d
+// }
+
+
+Array.prototype.snail = function (rowsCount, colsCount) {
+    if (rowsCount * colsCount !== this.length) return []
+
+    let array2d = Array.from({ length: rowsCount }, () => Array.from({ length: colsCount }, () => 0))
+    for (let col = 0; col < colsCount; col++) {
+        for (let row = 0; row < rowsCount; row++) {
+            let index = col * rowsCount + row
+            if (col % 2 === 0) {
+                array2d[row][col] = this[index]
+            } else {
+                array2d[rowsCount - 1 - row][col] = this[index]
+            }
+        }
+    }
+    return array2d
+}
+
+
+
+console.log(arr.snail(5, 4))

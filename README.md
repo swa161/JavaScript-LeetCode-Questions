@@ -87,3 +87,8 @@
  - If the `args` is an array, every time the function is called, a new array instance is created in the memory, even if the numbers inside are exactly the same.
  - In JavaScript, Objects and Arrays are reference Types. When using them as keys i na `map`, the Map doesn't look at the content; it looks at the memory address.
  - use `JSON.strinfy(args)` to convert an array into a string primitive. or Alternatively `args.join(",")`
+
+ ### 2624. Snail Traversal
+ - `let array2d = Array.from({length: rowsCount}, () => Array.from({length: colsCount}, () => 0))`
+ - `Array.from(arrayLike, mapFn)`: static method creates a new, shallow-copied Array instance from an iterable or array-like object.
+ - 
